@@ -34,7 +34,7 @@ class Quiz(models.Model):
 # Questions and Quizes have a many-to-many relationship, this table links Questions and Quizes together
 class QuizQuestion(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    quiz_id = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    quiz_id = models.ForeignKey(Quiz, on_delete=models.CASCADE, blank=False)
 
 
 class Score(models.Model):

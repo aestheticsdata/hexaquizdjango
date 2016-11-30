@@ -5,22 +5,23 @@ from .models import *
 
 class QuizQuestionsInline(admin.TabularInline):
     model = QuizQuestion
-    extra = 1
+    extra = 0
+
+
+class AnwsersInline(admin.TabularInline):
+    model = Answer
+    extra = 0
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    inlines = (QuizQuestionsInline,)
-
-
-class QuizAdmin(admin.ModelAdmin):
-    inlines = (QuizQuestionsInline,)
+    inlines = [AnwsersInline, QuizQuestionsInline]
+    list_filter = ['quiz']
 
 
 admin.site.register(User)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Quiz, QuizAdmin)
+admin.site.register(Quiz)
 admin.site.register(Score)
-admin.site.register(Answer)
 admin.site.register(UserAnswer)
 
 admin.site.site_header = 'Hexaquiz admin'
